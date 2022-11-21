@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './qn.dart';
+import './ans.dart';
 
 void main() => runApp(const MyApp());
 
@@ -24,7 +25,7 @@ class _MyAppState extends State<MyApp> {
         _questionNum += 1;
       }
     });
-    print(_questionNum);
+    // print(_questionNum);
   }
 
   @override //? Its just a decorator that makes our code much clearer (good practice)
@@ -38,6 +39,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.orangeAccent,
         title: Container(
           width: double.infinity,
           padding: const EdgeInsets.all(10), 
@@ -52,18 +54,12 @@ class _MyAppState extends State<MyApp> {
           Question(
             quesList[_questionNum],
             ),
-          ElevatedButton(
-              onPressed:_answerFunc, //? Shouldn't use () after function to make it act as a pointer
-              child: const Text('Option 1')),
-          ElevatedButton(
-            onPressed: _answerFunc, 
-          child: const Text('Option 2')
-          ),
-          ElevatedButton(
-              onPressed: _answerFunc,
-              child: const Text('Option 3')),
-        ],
-      ),
-    ));
+          Answer(_answerFunc),
+          Answer(_answerFunc),
+          Answer(_answerFunc),
+          ],
+        ),
+      )
+    );
   }
 }
