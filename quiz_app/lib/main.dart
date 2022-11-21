@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+import './qn.dart';
+
+void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   // const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+//* The _ in front of MyAppState is to make it a private class instead of public
+class _MyAppState extends State<MyApp> { 
   // const MyApp({super.key});
-  var questionNum = 0;
+  var _questionNum = 0;
 
-  void answerFunc() {
+  void _answerFunc() {
     setState(() {
-      if(questionNum < 2) {
-        questionNum += 1;
+      if(_questionNum < 2) {
+        _questionNum += 1;
       }
     });
-    print(questionNum);
+    print(_questionNum);
   }
 
   @override //? Its just a decorator that makes our code much clearer (good practice)
@@ -33,18 +38,29 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
-        title: const Text('Test App'),
+        title: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(10), 
+          child: const Text(
+            'Quiz App', 
+            textAlign: TextAlign.center,
+            ),
+          )
       ),
       body: Column(
         children: [
-          Text(quesList[questionNum]),
+          Question(
+            quesList[_questionNum],
+            ),
           ElevatedButton(
-              onPressed:
-                  answerFunc, //? Shouldn't use () after function to make it act as a pointer
+              onPressed:_answerFunc, //? Shouldn't use () after function to make it act as a pointer
               child: const Text('Option 1')),
-          ElevatedButton(onPressed: answerFunc, child: const Text('Option 2')),
           ElevatedButton(
-              onPressed: answerFunc,
+            onPressed: _answerFunc, 
+          child: const Text('Option 2')
+          ),
+          ElevatedButton(
+              onPressed: _answerFunc,
               child: const Text('Option 3')),
         ],
       ),
