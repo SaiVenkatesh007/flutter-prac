@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class Answer extends StatelessWidget {
   final VoidCallback selecter;
+  final String ansTxt;
 
-  Answer(this.selecter);
+  const Answer(this.selecter, this.ansTxt);
+  
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +16,9 @@ class Answer extends StatelessWidget {
         onPressed: selecter,
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.orangeAccent)),
-        child: const Text(
-          'Option 1',
-          style: TextStyle(color: Color.fromARGB(255, 252, 11, 91)),
+        child: Text(
+          ansTxt,
+          style: const TextStyle(color: Color.fromARGB(255, 252, 11, 91)),
         ),
       ),
     );
