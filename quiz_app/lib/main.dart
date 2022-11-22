@@ -18,26 +18,50 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // const MyApp({super.key});
   var _questionNum = 0;
+  var _totalScore = 0;
+
   final _quesList = [
     {
       'qnTxt': 'What is your favorite thing?',
-      'ans': ['Cars', 'Bikes', 'Phones', 'Computers'],
+      'ans': [
+        {'text': 'Cars', 'score': 9},
+        {'text': 'Bikes', 'score': 8},
+        {'text': 'Phones', 'score': 7},
+        {'text': 'Computers', 'score': 10},
+      ],
     },
     {
       'qnTxt': 'What is your favorite place?',
-      'ans': ['Hotel', 'Home', 'College', 'Dormitory'],
+      'ans': [
+        {'text': 'Hotel', 'score': 8},
+        {'text': 'Home', 'score': 9},
+        {'text': 'College', 'score': 10},
+        {'text': 'Dormitory', 'score': 7},
+      ],
     },
     {
       'qnTxt': 'What is your favorite color?',
-      'ans': ['Orange', 'Red', 'Black', 'Blue'],
+      'ans': [
+        {'text': 'Orange', 'score': 10},
+        {'text': 'Red', 'score': 8},
+        {'text': 'Black', 'score': 9},
+        {'text': 'Blue', 'score': 7},
+      ],
     },
     {
       'qnTxt': 'What is your favorite sport?',
-      'ans': ['Cricket', 'Football', 'Basketball', 'F1'],
+      'ans': [
+        {'text': 'Cricket', 'score': 9},
+        {'text': 'Football', 'score': 7},
+        {'text': 'Basketball', 'score': 8},
+        {'text': 'F1', 'score': 10},
+      ],
     },
   ];
 
-  void _answerFunc() {
+  void _answerFunc(int score) {
+    _totalScore += score;
+
     setState(() {
       _questionNum += 1;
     });
@@ -64,7 +88,7 @@ class _MyAppState extends State<MyApp> {
               _quesList,
               _questionNum,
             )
-          : End(),
+          : End(_totalScore),
     ));
   }
 }
