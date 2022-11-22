@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/end.dart';
 
-import './qn.dart';
-import './ans.dart';
+import './quiz.dart';
 
 void main() => runApp(const MyApp());
 
@@ -18,7 +18,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // const MyApp({super.key});
   var _questionNum = 0;
-  final quesList = [
+  final _quesList = [
     {
       'qnTxt': 'What is your favorite thing?',
       'ans': ['Cars', 'Bikes', 'Phones', 'Computers'],
@@ -58,20 +58,13 @@ class _MyAppState extends State<MyApp> {
               textAlign: TextAlign.center,
             ),
           )),
-      body: _questionNum < quesList.length
-          ? Column(
-              children: [
-                Question(
-                  (quesList[_questionNum])['qnTxt'].toString(),
-                ),
-                ...(quesList[_questionNum]['ans'] as List<String>).map(
-                  (answer) => Answer(_answerFunc, answer),
-                )
-              ],
+      body: _questionNum < _quesList.length
+          ? Quiz(
+              _answerFunc,
+              _quesList,
+              _questionNum,
             )
-          : const Center(
-              child: Text('The Quiz has been finished'),
-            ),
+          : End(),
     ));
   }
 }
