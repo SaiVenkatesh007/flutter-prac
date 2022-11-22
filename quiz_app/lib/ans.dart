@@ -18,7 +18,7 @@ class Answer extends StatelessWidget {
             backgroundColor: MaterialStateProperty.all(Colors.orangeAccent)),
         child: Text(
           ansTxt,
-          style: const TextStyle(color: Color.fromARGB(255, 252, 11, 91)),
+          style: const TextStyle(color: Color.fromARGB(255, 245, 245, 245)),
         ),
       ),
     );

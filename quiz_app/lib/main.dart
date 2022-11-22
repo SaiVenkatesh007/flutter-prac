@@ -18,37 +18,34 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // const MyApp({super.key});
   var _questionNum = 0;
+  final quesList = [
+    {
+      'qnTxt': 'What is your favorite thing?',
+      'ans': ['Cars', 'Bikes', 'Phones', 'Computers'],
+    },
+    {
+      'qnTxt': 'What is your favorite place?',
+      'ans': ['Hotel', 'Home', 'College', 'Dormitory'],
+    },
+    {
+      'qnTxt': 'What is your favorite color?',
+      'ans': ['Orange', 'Red', 'Black', 'Blue'],
+    },
+    {
+      'qnTxt': 'What is your favorite sport?',
+      'ans': ['Cricket', 'Football', 'Basketball', 'F1'],
+    },
+  ];
 
   void _answerFunc() {
     setState(() {
-      if (_questionNum < 3) {
-        _questionNum += 1;
-      }
+      _questionNum += 1;
     });
     // print(_questionNum);
   }
 
   @override //? Its just a decorator that makes our code much clearer (good practice)
   Widget build(BuildContext context) {
-    var quesList = [
-      {
-        'qnTxt': 'What is your favorite thing?',
-        'ans': ['Cars', 'Bikes', 'Phones', 'Computers'],
-      },
-      {
-        'qnTxt': 'What is your favorite place?',
-        'ans': ['Hotel', 'Home', 'College', 'Dormitory'],
-      },
-      {
-        'qnTxt': 'What is your favorite color?',
-        'ans': ['Orange', 'Red', 'Black', 'Blue'],
-      },
-      {
-        'qnTxt': 'What is your favorite sport?',
-        'ans': ['Cricket', 'Football', 'Basketball', 'F1'],
-      },
-    ];
-
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
@@ -61,14 +58,20 @@ class _MyAppState extends State<MyApp> {
               textAlign: TextAlign.center,
             ),
           )),
-      body: Column(
-        children: [
-          Question(
-            (quesList[_questionNum])['qnTxt'].toString(),
-          ),
-          ...(quesList[_questionNum]['ans'] as List<String>).map((answer) => Answer(_answerFunc,answer))
-        ],
-      ),
+      body: _questionNum < quesList.length
+          ? Column(
+              children: [
+                Question(
+                  (quesList[_questionNum])['qnTxt'].toString(),
+                ),
+                ...(quesList[_questionNum]['ans'] as List<String>).map(
+                  (answer) => Answer(_answerFunc, answer),
+                )
+              ],
+            )
+          : const Center(
+              child: Text('The Quiz has been finished'),
+            ),
     ));
   }
 }
