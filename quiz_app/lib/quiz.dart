@@ -8,7 +8,7 @@ class Quiz extends StatelessWidget {
   final int questionNum;
   final Function answerFunc;
 
-  Quiz(this.answerFunc, this.quesList, this.questionNum);
+  const Quiz(this.answerFunc, this.quesList, this.questionNum, {super.key});
 
   @override
   Widget build(BuildContext context) {

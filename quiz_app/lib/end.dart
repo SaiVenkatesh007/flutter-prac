@@ -4,7 +4,7 @@ class End extends StatelessWidget {
   final int endScore;
   final VoidCallback resetFunc;
 
-  End(this.endScore, this.resetFunc);
+  const End(this.endScore, this.resetFunc, {super.key});
 
   String get endStatement {
     String endText;
@@ -16,7 +16,7 @@ class End extends StatelessWidget {
     } else if (30 < endScore && endScore <= 35) {
       endText = 'You are OK to the max!';
     } else {
-      endText = 'You\'ve got to improve man for real!';
+      endText = 'You\'ve gotta improve man for real!';
     }
 
     return endText;
@@ -25,7 +25,7 @@ class End extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 300),
+      margin: const EdgeInsets.symmetric(vertical: 300, horizontal: 10),
       child: Column(
         children: [
           Text(
@@ -39,15 +39,18 @@ class End extends StatelessWidget {
           Container(
             width: double.infinity,
             margin: const EdgeInsets.all(30),
-            child: ElevatedButton(
+            child: OutlinedButton(
               onPressed: resetFunc,
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.orangeAccent),
+              style: OutlinedButton.styleFrom(
+                side: const BorderSide(
+                  width: 2,
+                  color: Colors.orange,
+                ),
               ),
               child: const Text(
                 "Gotta give it anotha' shot",
                 style: TextStyle(
-                  color: Color.fromARGB(255, 245, 245, 245),
+                  color: Colors.orangeAccent,
                   fontSize: 15,
                 ),
               ),
