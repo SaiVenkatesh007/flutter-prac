@@ -25,7 +25,7 @@ class End extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 300, horizontal: 10),
+      margin: const EdgeInsets.symmetric(vertical: 50, horizontal: 10),
       child: Column(
         children: [
           Text(
@@ -38,19 +38,19 @@ class End extends StatelessWidget {
           ),
           Container(
             width: double.infinity,
-            margin: const EdgeInsets.all(30),
+            margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
             child: OutlinedButton(
               onPressed: resetFunc,
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(
                   width: 2,
-                  color: Colors.orange,
+                  color: Colors.orangeAccent,
                 ),
               ),
               child: const Text(
                 "Gotta give it anotha' shot",
                 style: TextStyle(
-                  color: Colors.orangeAccent,
+                  color: Colors.orange,
                   fontSize: 15,
                 ),
               ),
