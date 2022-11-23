@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/end.dart';
 
+import './end.dart';
 import './quiz.dart';
 
 void main() => runApp(const MyApp());
@@ -19,6 +19,13 @@ class _MyAppState extends State<MyApp> {
   // const MyApp({super.key});
   var _questionNum = 0;
   var _totalScore = 0;
+
+  void _restartQuiz() {
+    setState(() {
+      _questionNum = 0;
+      _totalScore = 0;
+    });
+  }
 
   final _quesList = [
     {
@@ -88,7 +95,10 @@ class _MyAppState extends State<MyApp> {
               _quesList,
               _questionNum,
             )
-          : End(_totalScore),
+          : End(
+              _totalScore,
+              _restartQuiz,
+            ),
     ));
   }
 }
